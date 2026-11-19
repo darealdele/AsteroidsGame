@@ -1,14 +1,14 @@
 Spaceship ship;
 Asteroid roid;
 Star[] stars;
-ArrayList<Asteroid> list;
+ArrayList list;
 boolean wPressed = false;
 boolean aPressed = false;
 boolean sPressed = false;
 boolean dPressed = false;
 public void setup() 
 {
-  list = new ArrayList<>();
+  list = new ArrayList();
   for(int i = 0; i < 20; i++){
     list.add(new Asteroid());  
   }
