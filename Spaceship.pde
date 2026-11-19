@@ -50,6 +50,12 @@ class Spaceship extends Floater
     myYspeed = 0;
     myPointDirection = 0;
   }
+  public float getCenterX(){
+    return myCenterX;  
+  }
+  public float getCenterY(){
+    return myCenterY;  
+  }
   public void setCord(int x, int y){
     myCenterX = x;
     myCenterY = y;
