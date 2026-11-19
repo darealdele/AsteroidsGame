@@ -75,7 +75,8 @@ public void draw()
   for(int i = 0; i < stars.length; i++){
     stars[i].drawStar();
   }
-
+  ship.move();
+  ship.show();
 }
 
 public void keyPressed(){
