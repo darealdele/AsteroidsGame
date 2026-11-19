@@ -23,42 +23,18 @@ public void setup()
 public void draw() 
 {
   background(0);
-  ship.show();
-  ship.move();
-  for(int i = 0; i < list.size(); i++){
-    Asteroid item = list.get(i);
-    double distance = dist(item.getCenterX(),item.getCenterY(),ship.getCenterX(),ship.getCenterY());
-    if(distance < 30){
-      list.set(i,new Asteroid());  
-    }
-    item.move();
-    item.show();
+  if (wPressed == true) {
+    ship.accelerate(.1);
   }
-  for(int i = 0; i < stars.length; i++){
-    stars[i].drawStar();
+  if (sPressed == true) {
+    ship.accelerate(-.1);
   }
-  ship.show();
-  ship.move();
-}
-
-public void keyPressed(){
-  if(key == 'w'){
-    wPressed = true;
+  if (aPressed == true) {
+    ship.turn(-1);
   }
-  if(key == 's'){
-    sPressed = true;
+  if (dPressed == true) {
+    ship.turn(1);
   }
-  if(key == 'a'){
-    aPressed = true;
-  }
-  if(key == 'd'){
-    dPressed = true;
-  }
-  if(key == 'h'){
-    ship.setCord((int)(Math.random()*500),(int)(Math.random()*500));
-    ship.turn((int)(Math.random()*500));
-    ship.setSpeed(0,0);
-  } 
   if(wPressed == true && aPressed == true){
     ship.accelerate(.1);
     ship.turn(-2);
@@ -87,6 +63,39 @@ public void keyPressed(){
   if(dPressed == true){
     ship.turn(1);
   }
+  for(int i = 0; i < list.size(); i++){
+    Asteroid item = list.get(i);
+    double distance = dist(item.getCenterX(),item.getCenterY(),ship.getCenterX(),ship.getCenterY());
+    if(distance < 30){
+      list.set(i,new Asteroid());  
+    }
+    item.move();
+    item.show();
+  }
+  for(int i = 0; i < stars.length; i++){
+    stars[i].drawStar();
+  }
+
+}
+
+public void keyPressed(){
+  if(key == 'w'){
+    wPressed = true;
+  }
+  if(key == 's'){
+    sPressed = true;
+  }
+  if(key == 'a'){
+    aPressed = true;
+  }
+  if(key == 'd'){
+    dPressed = true;
+  }
+  if(key == 'h'){
+    ship.setCord((int)(Math.random()*500),(int)(Math.random()*500));
+    ship.turn((int)(Math.random()*500));
+    ship.setSpeed(0,0);
+  } 
 }
 
 public void keyReleased(){
